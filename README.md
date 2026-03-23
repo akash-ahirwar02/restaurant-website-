@@ -6,40 +6,8 @@
 
 ## Architecture Overview
 
-```
-Developer (Local)
-        │
-        │  git push
-        ▼
-┌─────────────────┐
-│     GitHub      │  ← Source Code + Dockerfile
-│  (restaurant-   │
-│   website repo) │
-└────────┬────────┘
-         │  Webhook Trigger
-         ▼
-┌─────────────────┐
-│    Jenkins      │  ← AWS EC2 (Server 1)
-│   CI/CD Server  │  Port: 8080
-└────────┬────────┘
-         │
-         ├──────────────────────────────┐
-         │  Code Quality Scan           │  Docker Build & Push
-         ▼                              ▼
-┌─────────────────┐          ┌─────────────────────┐
-│   SonarQube     │          │     Docker Hub       │
-│  Code Analysis  │          │  erakash2000/        │
-│  AWS EC2 Server2│          │  restaurant-website  │
-│  Port: 9000     │          └──────────┬──────────┘
-└─────────────────┘                     │  docker pull
-                                        ▼
-                             ┌─────────────────────┐
-                             │   Docker Server      │
-                             │   AWS EC2 (Server 3) │
-                             │   Port: 80           │
-                             │   Website Live!    │
-                             └─────────────────────┘
-```
+<img width="688" height="440" alt="image" src="https://github.com/user-attachments/assets/3166ab16-b9d6-48ac-8b89-c35d0269477c" />
+
 
 ---
 
